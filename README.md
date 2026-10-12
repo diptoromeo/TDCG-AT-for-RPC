@@ -257,10 +257,21 @@ POST /classify
 Content-Type: application/json
 
 {
-  "title": "Attention Is All You Need",
-  "abstract": "We propose a new network architecture, the Transformer...",
-  "year": 2017,
-  "references": ["Bahdanau et al. 2015", "Hochreiter 1997"]
+  "original_csv_title": "Paper title",
+  "original_csv_abstract": "Paper abstract...",
+  "scraped_main_authors": "Author 1, Author 2",
+  "scraped_main_keywords": "cs.AI cs.LG",
+  "scraped_main_title_from_scholar": "Paper title",
+  "scraped_main_abstract_from_scholar": "Paper abstract...",
+  "cited_by_url": "https://scholar.google.com/scholar?cites=...",
+  "citing_articles": [
+    {
+      "title": "Citing paper title",
+      "authors": "Author A, Author B",
+      "abstract": "Citing paper abstract...",
+      "keywords": "cs.AI"
+    }
+  ]
 }
 ```
 
