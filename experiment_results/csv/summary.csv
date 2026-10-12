@@ -1,0 +1,18 @@
+Experiment,Metric,Value
+Dataset,Total papers,5529
+Dataset,Labeled samples,1370
+Dataset,Classes,9
+Dataset,Imbalance ratio,87.12
+Graph,|V|,5085
+Graph,|E|,3933
+Graph,WCC count,1233
+Graph,Delta-t mean (yr),2.698
+Features,Matrix shape,1370×11556
+Features,TF-IDF density,0.005111
+Features,SNR,7.825
+5-fold CV,Accuracy (TDCG-AT SVM),0.992
+5-fold CV,Accuracy (TDCG-AT Ensemble),0.9993
+5-fold CV,Macro-F1 (Ensemble),0.999
+Ablation,+Graph feature gain (Δ acc),0.1248
+LOSO,Mean accuracy,0.9901
+LOSO,Mean Macro-F1,0.9721

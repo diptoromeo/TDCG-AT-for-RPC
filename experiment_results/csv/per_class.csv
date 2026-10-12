@@ -1,0 +1,10 @@
+Domain,Precision,Recall,F1,Support
+Bioinformatics,1.0,0.875,0.9333,8
+CS_AI_ML,0.9986,0.9928,0.9957,697
+CS_Graph_Theory,1.0,0.9412,0.9697,34
+CS_Networks,0.9952,0.9952,0.9952,207
+CS_Systems,0.9828,0.9913,0.987,115
+Engineering,0.9808,1.0,0.9903,51
+Mathematics_Physics,0.9752,1.0,0.9874,157
+Medicine_Biology,0.9756,1.0,0.9877,40
+NLP_Linguistics,0.9836,0.9836,0.9836,61

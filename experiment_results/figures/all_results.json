@@ -1,0 +1,666 @@
+{
+  "dataset": {
+    "sources": {
+      "arXiv": {
+        "root": 747,
+        "citing": 1997,
+        "total": 2744,
+        "year_min": 2000,
+        "year_max": 2025,
+        "abstract_cov": 100.0
+      },
+      "DBLP": {
+        "root": 519,
+        "citing": 1577,
+        "total": 2096,
+        "year_min": 2002,
+        "year_max": 2025,
+        "abstract_cov": 100.0
+      },
+      "Elsevier": {
+        "root": 320,
+        "citing": 369,
+        "total": 689,
+        "year_min": 2015,
+        "year_max": 2025,
+        "abstract_cov": 100.0
+      }
+    },
+    "graph": {
+      "n_nodes": 5085,
+      "n_edges": 3933,
+      "n_wcc": 1233,
+      "largest_wcc": 370,
+      "year_range": [
+        1999,
+        2025
+      ],
+      "n_with_year": 4075,
+      "delta_t_mean": 2.698,
+      "delta_t_std": 1.826,
+      "lambda_decay": 0.1,
+      "alpha_pr": 0.85
+    },
+    "n_labeled": 1370,
+    "n_classes": 9,
+    "label_distribution": {
+      "CS_Graph_Theory": 34,
+      "CS_AI_ML": 697,
+      "Mathematics_Physics": 157,
+      "CS_Networks": 207,
+      "Medicine_Biology": 40,
+      "NLP_Linguistics": 61,
+      "Engineering": 51,
+      "CS_Systems": 115,
+      "Bioinformatics": 8
+    },
+    "imbalance_ratio": 87.12
+  },
+  "features": {
+    "matrix_shape": [
+      1370,
+      11556
+    ],
+    "tfidf_shape": [
+      1370,
+      11543
+    ],
+    "graph_shape": [
+      1370,
+      13
+    ],
+    "tfidf_density": 0.005111,
+    "conn_sim_mean": 0.1528,
+    "rand_sim_mean": 0.0195,
+    "snr": 7.825,
+    "snr_pvalue": 1.9224974252940432e-48,
+    "tpr_max": 0.037535
+  },
+  "classifier_comparison": {
+    "LinearSVC (softmax)": {
+      "accuracy": 0.992,
+      "macro_f1": 0.9811,
+      "weighted_f1": 0.9919,
+      "time_s": 0.21
+    },
+    "LogisticRegression": {
+      "accuracy": 0.9737,
+      "macro_f1": 0.9694,
+      "weighted_f1": 0.975,
+      "time_s": 1.27
+    },
+    "SGD Classifier": {
+      "accuracy": 0.9912,
+      "macro_f1": 0.9864,
+      "weighted_f1": 0.9913,
+      "time_s": 0.14
+    },
+    "ComplementNB": {
+      "accuracy": 0.9066,
+      "macro_f1": 0.8829,
+      "weighted_f1": 0.905,
+      "time_s": 0.04
+    },
+    "KNN (k=5)": {
+      "accuracy": 0.9781,
+      "macro_f1": 0.9704,
+      "weighted_f1": 0.978,
+      "time_s": 0.06
+    },
+    "Decision Tree": {
+      "accuracy": 0.9898,
+      "macro_f1": 0.9822,
+      "weighted_f1": 0.9898,
+      "time_s": 0.48
+    },
+    "Random Forest": {
+      "accuracy": 0.9226,
+      "macro_f1": 0.7689,
+      "weighted_f1": 0.9142,
+      "time_s": 5.16
+    },
+    "TDCG-AT SVM only": {
+      "accuracy": 0.992,
+      "macro_f1": 0.9811,
+      "weighted_f1": 0.9919,
+      "time_s": 0.21
+    },
+    "TDCG-AT LR only": {
+      "accuracy": 0.9737,
+      "macro_f1": 0.9694,
+      "weighted_f1": 0.975,
+      "time_s": 1.41
+    },
+    "TDCG-AT Ensemble": {
+      "accuracy": 0.9993,
+      "macro_f1": 0.999,
+      "weighted_f1": 0.9993,
+      "time_s": 0.02
+    }
+  },
+  "ablation_features": {
+    "TF-IDF only (d=11543)": {
+      "accuracy": 0.8672,
+      "macro_f1": 0.74,
+      "delta_acc": 0.0
+    },
+    "TF-IDF + structural (d=+4)": {
+      "accuracy": 0.8664,
+      "macro_f1": 0.738,
+      "delta_acc": -0.0007
+    },
+    "TF-IDF + domain scores (d=+9)": {
+      "accuracy": 0.992,
+      "macro_f1": 0.9811,
+      "delta_acc": 0.1248
+    },
+    "Full X (TF-IDF+graph, d=+13)": {
+      "accuracy": 0.992,
+      "macro_f1": 0.9811,
+      "delta_acc": 0.1248
+    }
+  },
+  "ablation_models": {
+    "SVM only (w=1.0)": {
+      "accuracy": 0.992,
+      "macro_f1": 0.9811
+    },
+    "LR only (w=1.0)": {
+      "accuracy": 0.9737,
+      "macro_f1": 0.9694
+    },
+    "GP only (w=1.0)": {
+      "accuracy": 0.9993,
+      "macro_f1": 0.9997
+    },
+    "SVM+LR (0.5/0.5)": {
+      "accuracy": 0.9985,
+      "macro_f1": 0.998
+    },
+    "SVM+GP (0.5/0.5)": {
+      "accuracy": 0.9993,
+      "macro_f1": 0.9997
+    },
+    "LR+GP  (0.5/0.5)": {
+      "accuracy": 0.9964,
+      "macro_f1": 0.9963
+    },
+    "Full Ensemble (0.45/0.35/0.20)": {
+      "accuracy": 0.9993,
+      "macro_f1": 0.999
+    }
+  },
+  "ablation_params": {
+    "lambda": {
+      "0.01": {
+        "accuracy": 0.992,
+        "macro_f1": 0.9811
+      },
+      "0.05": {
+        "accuracy": 0.992,
+        "macro_f1": 0.9811
+      },
+      "0.1": {
+        "accuracy": 0.992,
+        "macro_f1": 0.9811
+      },
+      "0.2": {
+        "accuracy": 0.992,
+        "macro_f1": 0.9811
+      },
+      "0.3": {
+        "accuracy": 0.992,
+        "macro_f1": 0.9811
+      },
+      "0.5": {
+        "accuracy": 0.992,
+        "macro_f1": 0.9811
+      },
+      "1.0": {
+        "accuracy": 0.992,
+        "macro_f1": 0.9811
+      }
+    },
+    "title_boost": {
+      "1": {
+        "accuracy": 0.992,
+        "macro_f1": 0.9811
+      },
+      "2": {
+        "accuracy": 0.992,
+        "macro_f1": 0.9811
+      },
+      "3": {
+        "accuracy": 0.992,
+        "macro_f1": 0.9811
+      },
+      "4": {
+        "accuracy": 0.992,
+        "macro_f1": 0.9811
+      },
+      "5": {
+        "accuracy": 0.992,
+        "macro_f1": 0.9811
+      }
+    },
+    "C_svm": {
+      "0.01": {
+        "accuracy": 0.9752,
+        "macro_f1": 0.9696
+      },
+      "0.1": {
+        "accuracy": 0.9891,
+        "macro_f1": 0.9784
+      },
+      "0.5": {
+        "accuracy": 0.9912,
+        "macro_f1": 0.9807
+      },
+      "1.0": {
+        "accuracy": 0.992,
+        "macro_f1": 0.9811
+      },
+      "2.0": {
+        "accuracy": 0.9912,
+        "macro_f1": 0.9801
+      },
+      "5.0": {
+        "accuracy": 0.9912,
+        "macro_f1": 0.9801
+      },
+      "10.0": {
+        "accuracy": 0.9905,
+        "macro_f1": 0.9796
+      }
+    },
+    "mu": {
+      "0.0": {
+        "accuracy": 0.9993,
+        "macro_f1": 0.999
+      },
+      "0.1": {
+        "accuracy": 0.9993,
+        "macro_f1": 0.999
+      },
+      "0.2": {
+        "accuracy": 0.9993,
+        "macro_f1": 0.999
+      },
+      "0.3": {
+        "accuracy": 0.9993,
+        "macro_f1": 0.999
+      },
+      "0.4": {
+        "accuracy": 0.9993,
+        "macro_f1": 0.999
+      },
+      "0.5": {
+        "accuracy": 0.9993,
+        "macro_f1": 0.999
+      },
+      "0.7": {
+        "accuracy": 0.9993,
+        "macro_f1": 0.999
+      }
+    }
+  },
+  "temporal_split": {
+    "2021": {
+      "n_train": 107,
+      "n_test": 992,
+      "accuracy": 0.9667,
+      "macro_f1": 0.9141
+    },
+    "2022": {
+      "n_train": 209,
+      "n_test": 890,
+      "accuracy": 0.9775,
+      "macro_f1": 0.9606
+    },
+    "2023": {
+      "n_train": 373,
+      "n_test": 726,
+      "accuracy": 0.9807,
+      "macro_f1": 0.9548
+    },
+    "2024": {
+      "n_train": 641,
+      "n_test": 458,
+      "accuracy": 0.9869,
+      "macro_f1": 0.9559
+    }
+  },
+  "loso": {
+    "arxiv": {
+      "n_train": 584,
+      "n_test": 786,
+      "accuracy": 0.9758,
+      "macro_f1": 0.928
+    },
+    "dblp": {
+      "n_train": 804,
+      "n_test": 558,
+      "accuracy": 0.9946,
+      "macro_f1": 0.9882
+    },
+    "elsevier": {
+      "n_train": 1195,
+      "n_test": 26,
+      "accuracy": 1.0,
+      "macro_f1": 1.0
+    },
+    "mean": {
+      "accuracy": 0.9901,
+      "macro_f1": 0.9721
+    }
+  },
+  "per_class": {
+    "Bioinformatics": {
+      "precision": 1.0,
+      "recall": 0.875,
+      "f1-score": 0.9333,
+      "support": 8.0
+    },
+    "CS_AI_ML": {
+      "precision": 0.9986,
+      "recall": 0.9928,
+      "f1-score": 0.9957,
+      "support": 697.0
+    },
+    "CS_Graph_Theory": {
+      "precision": 1.0,
+      "recall": 0.9412,
+      "f1-score": 0.9697,
+      "support": 34.0
+    },
+    "CS_Networks": {
+      "precision": 0.9952,
+      "recall": 0.9952,
+      "f1-score": 0.9952,
+      "support": 207.0
+    },
+    "CS_Systems": {
+      "precision": 0.9828,
+      "recall": 0.9913,
+      "f1-score": 0.987,
+      "support": 115.0
+    },
+    "Engineering": {
+      "precision": 0.9808,
+      "recall": 1.0,
+      "f1-score": 0.9903,
+      "support": 51.0
+    },
+    "Mathematics_Physics": {
+      "precision": 0.9752,
+      "recall": 1.0,
+      "f1-score": 0.9874,
+      "support": 157.0
+    },
+    "Medicine_Biology": {
+      "precision": 0.9756,
+      "recall": 1.0,
+      "f1-score": 0.9877,
+      "support": 40.0
+    },
+    "NLP_Linguistics": {
+      "precision": 0.9836,
+      "recall": 0.9836,
+      "f1-score": 0.9836,
+      "support": 61.0
+    }
+  },
+  "confusion_matrix": [
+    [
+      7,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    [
+      0,
+      692,
+      0,
+      1,
+      1,
+      0,
+      2,
+      0,
+      1
+    ],
+    [
+      0,
+      1,
+      32,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      206,
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      114,
+      1,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      51,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      157,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      40,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      60
+    ]
+  ],
+  "learning_curve": {
+    "train_sizes": [
+      109,
+      219,
+      328,
+      438,
+      548,
+      657,
+      767,
+      876,
+      986,
+      1096
+    ],
+    "train_scores_mean": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "test_scores_mean": [
+      0.7627737226277372,
+      0.8956204379562044,
+      0.9,
+      0.9875912408759124,
+      0.9897810218978103,
+      0.9919708029197081,
+      0.9927007299270073,
+      0.9927007299270073,
+      0.9912408759124087,
+      0.9919708029197081
+    ]
+  },
+  "grid_search": {
+    "C=0.1, ngram=(1, 1)": 0.9869,
+    "C=0.1, ngram=(1, 2)": 0.9891,
+    "C=0.1, ngram=(2, 2)": 0.9891,
+    "C=1.0, ngram=(1, 1)": 0.992,
+    "C=1.0, ngram=(1, 2)": 0.992,
+    "C=1.0, ngram=(2, 2)": 0.9912,
+    "C=5.0, ngram=(1, 1)": 0.9927,
+    "C=5.0, ngram=(1, 2)": 0.9912,
+    "C=5.0, ngram=(2, 2)": 0.9905
+  },
+  "graph_structure": {
+    "n_nodes": 5085,
+    "n_edges": 3933,
+    "in_degree_max": 369,
+    "in_degree_mean": 0.7735,
+    "wcc_count": 1233,
+    "largest_wcc": 370,
+    "edge_weight_mean": 0.7892,
+    "power_law_gamma": 0.6486,
+    "power_law_r2": 0.5601,
+    "wcc_purity_mean": 0.8163
+  },
+  "temporal_trends": {
+    "CS_Graph_Theory": {
+      "2020": 5,
+      "2023": 2,
+      "2024": 7,
+      "2025": 2,
+      "2021": 2,
+      "2019": 1,
+      "2022": 1
+    },
+    "Mathematics_Physics": {
+      "2022": 18,
+      "2020": 7,
+      "2025": 12,
+      "2023": 15,
+      "2021": 10,
+      "2024": 23,
+      "2019": 3,
+      "2018": 1
+    },
+    "CS_AI_ML": {
+      "2022": 76,
+      "2025": 68,
+      "2023": 164,
+      "2024": 210,
+      "2021": 40,
+      "2019": 8,
+      "2020": 18,
+      "2018": 2
+    },
+    "Medicine_Biology": {
+      "2025": 1,
+      "2022": 5,
+      "2023": 5,
+      "2024": 8,
+      "2019": 4,
+      "2021": 5,
+      "2020": 5
+    },
+    "NLP_Linguistics": {
+      "2024": 17,
+      "2023": 16,
+      "2022": 7,
+      "2025": 4,
+      "2020": 2,
+      "2019": 1,
+      "2021": 3
+    },
+    "Engineering": {
+      "2024": 9,
+      "2022": 8,
+      "2025": 8,
+      "2023": 10,
+      "2019": 1,
+      "2021": 2,
+      "2020": 2
+    },
+    "CS_Networks": {
+      "2025": 13,
+      "2024": 41,
+      "2022": 25,
+      "2023": 30,
+      "2018": 2,
+      "2021": 22,
+      "2020": 24,
+      "2019": 6
+    },
+    "CS_Systems": {
+      "2023": 23,
+      "2022": 23,
+      "2024": 22,
+      "2025": 9,
+      "2019": 3,
+      "2021": 16,
+      "2020": 5
+    },
+    "Bioinformatics": {
+      "2024": 2,
+      "2023": 1,
+      "2025": 1,
+      "2021": 2,
+      "2022": 1,
+      "2018": 1
+    }
+  },
+  "confidence": {
+    "mean_correct": 0.6015,
+    "mean_incorrect": 0.469,
+    "high_conf_0.7_pct": 0.1489,
+    "high_conf_0.9_pct": 0.0102
+  }
+}
