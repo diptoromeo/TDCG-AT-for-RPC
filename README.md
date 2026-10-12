@@ -52,7 +52,7 @@ Surpasses 15 GNN, temporal-graph, Pre-LM, and ensemble baselines by up to **+6.4
 ## Repository Structure
 
 ```
-AAAI27-(TDCG-AT_ClassifierAgen)/
+NAACL27-(TDCG-AT_ClassifierAgen)/
 │
 ├── main.py                         # Entry point: train / evaluate / serve / demo
 ├── experiments.py                  # Full experimental suite (all figures & tables)
@@ -116,7 +116,7 @@ TDCG-AT classifies papers into **9 research domains** using a 117-keyword vocabu
 
 ```bash
 # Clone or extract the repository
-cd AAAI27-(TDCG-AT_ClassifierAgen)
+cd NAACL27-(TDCG-AT_ClassifierAgen)
 
 # Create a virtual environment
 python -m venv venv
