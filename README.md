@@ -6,7 +6,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![NAACL 2025](https://img.shields.io/badge/NAACL-2025-red.svg)](https://2025.naacl.org/)
 
-> *Causal Arrows in Citation Graphs: Temporal Directionality as a Structural Prior for Research Paper Classification*
+> *Does Citation Direction Matter? Temporal Directionality as a Structural Prior for Research Paper Classification*
 
 ---
 
